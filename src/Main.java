@@ -8,69 +8,46 @@ public class Main {
         showWelcome();
         int randomNumber = thinkingNumber();
         int difficulty = chooseDifficulty();
-        int chances;
-        int attempts = 1;
+        int chances = 0;
+        int attempts = 0;
         int guess;
+        boolean won = false;
 
         if(difficulty == 1){
             chances = 10;
+            System.out.println("Great you have selected the Easy Difficulty.");
         }
         else if(difficulty == 2){
             chances = 5;
+            System.out.println("Great you have selected the Medium Difficulty.");
         }
-        else {
+        else if(difficulty == 3) {
             chances = 3;
+            System.out.println("Great you have selected the Hard Difficulty.");
         }
 
-        while(attempts <= chances) {
-            if (difficulty == 1){
-                System.out.println("Great you have selected the Easy Difficulty.");
-                System.out.print("Enter your Guess: ");
-                guess = read.nextInt();
-                if(randomNumber == guess){
-                    System.out.println("You guessed the correct number in " + attempts + ".");
-                } else if (randomNumber < guess) {
-                    System.out.println("Incorrect! The number is less than " + guess + ".");
-                    attempts++;
-                } else {
-                    System.out.println("Incorrect! The number is greater than " + guess + ".");
-                    attempts++;
-                }
+        while(attempts < chances) {
+            System.out.print("Enter your Guess: ");
+            guess = read.nextInt();
+            attempts++;
+            if(randomNumber == guess){
+                System.out.println("You guessed the correct number in " + attempts + ".");
+                won = true;
+                break;
+            } else if (randomNumber < guess) {
+                System.out.println("Incorrect! The number is less than " + guess + ".");
+            } else {
+                System.out.println("Incorrect! The number is greater than " + guess + ".");
             }
-            else if (difficulty == 2){
-                System.out.println("Great you have selected the Medium Difficulty.");
-                System.out.print("Enter your Guess: ");
-                guess = read.nextInt();
-                if(randomNumber == guess){
-                    System.out.println("You guessed the correct number in " + attempts + ".");
-                } else if (randomNumber < guess) {
-                    System.out.println("Incorrect! The number is less than " + guess + ".");
-                    attempts++;
-                } else {
-                    System.out.println("Incorrect! The number is greater than " + guess + ".");
-                    attempts++;
-                }
-
-            }
-            else if (difficulty == 3){
-                System.out.println("Great you have selected the Hard Difficulty.");
-                System.out.print("Enter your Guess: ");
-                guess = read.nextInt();
-                if(randomNumber == guess){
-                    System.out.println("You guessed the correct number in " + attempts + ".");
-                } else if (randomNumber < guess) {
-                    System.out.println("Incorrect! The number is less than " + guess + ".");
-                    attempts++;
-                } else {
-                    System.out.println("Incorrect! The number is greater than " + guess + ".");
-                    attempts++;
-                }
-            }
-            else{
-                System.out.println("Invalid choice.");
-            }
+        }
+        if(won == true){
+            System.out.println("Congratulations! You win!");
+        }
+        else if (won == false){
+            System.out.println("You lose!");
         }
     }
+
     static void showWelcome(){
         System.out.println("Welcome to the Number Guessing Game!");
     }
