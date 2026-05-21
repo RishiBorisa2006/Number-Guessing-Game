@@ -2,6 +2,12 @@
 
 A simple CLI-based Number Guessing Game built in Java.
 
+## Project Source
+
+This project was built as part of the roadmap.sh backend projects.
+
+Project URL: https://roadmap.sh/projects/number-guessing-game
+
 ## Features
 
 * Random number generation between 1 and 100
