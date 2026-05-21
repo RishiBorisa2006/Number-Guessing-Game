@@ -42,19 +42,16 @@ public class Main {
                     System.out.println("Incorrect! The number is greater than " + guess + ".");
                 }
             }
-            if(won == true){
+            if(won){
                 System.out.println("Congratulations! You win!");
             }
-            else if (won == false){
+            else {
                 System.out.println("You lose!");
             }
             System.out.println("Enter 1 to play again and 0 to quit: ");
             int replayChoice =  read.nextInt();
-            if(replayChoice == 1){
-                playAgain = true;
-            }
-            else if(replayChoice == 0){
-                break;
+            if(replayChoice == 0){
+                playAgain = false;
             }
         }
 
@@ -74,9 +71,16 @@ public class Main {
     }
 
     static int chooseDifficulty(){
-        System.out.println("Please select the difficulty level:\n1. Easy (10 Chances)\n2. Medium (5 Chances)\n3. Hard (3 Chances)");
-        System.out.print("Enter your choice: ");
-        int difficulty = read.nextInt();
-        return difficulty;
+        while(true) {
+            System.out.println("Please select the difficulty level:\n1. Easy (10 Chances)\n2. Medium (5 Chances)\n3. Hard (3 Chances)");
+            System.out.print("Enter your choice: ");
+            int difficulty = read.nextInt();
+            if(difficulty != 1 && difficulty != 2 && difficulty != 3){
+                System.out.println("Invalid choice.");
+            }
+            else{
+                return difficulty;
+            }
+        }
     }
 }
